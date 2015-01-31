@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  KHOItemsViewController.h
 //  Homepwner
 //
 //  Created by Kevin Ho on 1/31/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface KHOItemsViewController : UITableViewController
 
 @end
-

@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		D2BCF6E11A7D7860000726E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E01A7D7860000726E3 /* main.m */; };
 		D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E31A7D7860000726E3 /* AppDelegate.m */; };
-		D2BCF6E71A7D7860000726E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E61A7D7860000726E3 /* ViewController.m */; };
-		D2BCF6EA1A7D7860000726E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6E81A7D7860000726E3 /* Main.storyboard */; };
 		D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6EB1A7D7860000726E3 /* Images.xcassets */; };
 		D2BCF6EF1A7D7860000726E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */; };
 		D2BCF6FB1A7D7860000726E3 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6FA1A7D7860000726E3 /* HomepwnerTests.m */; };
+		D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */; };
+		D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7081A7D7A27000726E3 /* KHOItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +32,15 @@
 		D2BCF6E01A7D7860000726E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2BCF6E21A7D7860000726E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2BCF6E31A7D7860000726E3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D2BCF6E51A7D7860000726E3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D2BCF6E61A7D7860000726E3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D2BCF6E91A7D7860000726E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2BCF6EB1A7D7860000726E3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D2BCF6EE1A7D7860000726E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D2BCF6F41A7D7860000726E3 /* HomepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BCF6F91A7D7860000726E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BCF6FA1A7D7860000726E3 /* HomepwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerTests.m; sourceTree = "<group>"; };
+		D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHOItemsViewController.h; path = ../KHOItemsViewController.h; sourceTree = "<group>"; };
+		D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KHOItemsViewController.m; path = ../KHOItemsViewController.m; sourceTree = "<group>"; };
+		D2BCF7071A7D7A27000726E3 /* KHOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItem.h; sourceTree = "<group>"; };
+		D2BCF7081A7D7A27000726E3 /* KHOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +82,12 @@
 		D2BCF6DD1A7D7860000726E3 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */,
+				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
+				D2BCF7071A7D7A27000726E3 /* KHOItem.h */,
+				D2BCF7081A7D7A27000726E3 /* KHOItem.m */,
 				D2BCF6E21A7D7860000726E3 /* AppDelegate.h */,
 				D2BCF6E31A7D7860000726E3 /* AppDelegate.m */,
-				D2BCF6E51A7D7860000726E3 /* ViewController.h */,
-				D2BCF6E61A7D7860000726E3 /* ViewController.m */,
-				D2BCF6E81A7D7860000726E3 /* Main.storyboard */,
 				D2BCF6EB1A7D7860000726E3 /* Images.xcassets */,
 				D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */,
 				D2BCF6DE1A7D7860000726E3 /* Supporting Files */,
@@ -199,7 +201,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2BCF6EA1A7D7860000726E3 /* Main.storyboard in Resources */,
 				D2BCF6EF1A7D7860000726E3 /* LaunchScreen.xib in Resources */,
 				D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */,
 			);
@@ -219,9 +220,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2BCF6E71A7D7860000726E3 /* ViewController.m in Sources */,
 				D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */,
+				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
+				D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,14 +246,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D2BCF6E81A7D7860000726E3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2BCF6E91A7D7860000726E3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
