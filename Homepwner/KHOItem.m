@@ -64,5 +64,10 @@
     return [self initWithItemName:@"Item"];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ (%@): Worth $%d", self.itemName, self.serialNumber, self.valueInDollars];
+}
+
 
 @end
