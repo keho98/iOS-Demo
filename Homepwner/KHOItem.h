@@ -10,9 +10,6 @@
 
 @interface KHOItem : NSObject
 
-@property (nonatomic, strong) KHOItem *containedItem;
-@property (nonatomic, weak) KHOItem *container;
-
 @property (nonatomic, copy) NSString *itemName;
 @property (nonatomic, copy) NSString *serialNumber;
 @property (nonatomic) int valueInDollars;

@@ -64,10 +64,5 @@
     return [self initWithItemName:@"Item"];
 }
 
-- (void)setContainedItem:(KHOItem *)containedItem
-{
-    _containedItem = containedItem;
-    self.containedItem.container = self;
-}
 
 @end

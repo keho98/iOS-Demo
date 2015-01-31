@@ -14,6 +14,7 @@
 		D2BCF6FB1A7D7860000726E3 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6FA1A7D7860000726E3 /* HomepwnerTests.m */; };
 		D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */; };
 		D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7081A7D7A27000726E3 /* KHOItem.m */; };
+		D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KHOItemsViewController.m; path = ../KHOItemsViewController.m; sourceTree = "<group>"; };
 		D2BCF7071A7D7A27000726E3 /* KHOItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItem.h; sourceTree = "<group>"; };
 		D2BCF7081A7D7A27000726E3 /* KHOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItem.m; sourceTree = "<group>"; };
+		D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemStore.h; sourceTree = "<group>"; };
+		D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
 				D2BCF7071A7D7A27000726E3 /* KHOItem.h */,
 				D2BCF7081A7D7A27000726E3 /* KHOItem.m */,
+				D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */,
+				D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */,
 				D2BCF6E21A7D7860000726E3 /* AppDelegate.h */,
 				D2BCF6E31A7D7860000726E3 /* AppDelegate.m */,
 				D2BCF6EB1A7D7860000726E3 /* Images.xcassets */,
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */,
 				D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */,
 				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
