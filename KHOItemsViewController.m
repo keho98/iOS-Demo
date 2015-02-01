@@ -12,7 +12,7 @@
 
 #import "KHOItemsHeaderView.h"
 
-@interface KHOItemsViewController () <UITableViewDataSource>
+@interface KHOItemsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -47,14 +47,27 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 
 - (void)addNewItem:(id)sender
 {
-    NSLog(@"Add");
+    KHOItem *newItem = [[KHOItemStore sharedStore] createItem];
+    
+    NSInteger lastRow = [[[KHOItemStore sharedStore] allItems] indexOfObject:newItem];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    
+    [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationTop];
     return;
 }
 
 - (void)toggleEditingMode:(id)sender
 {
-    NSLog(@"Edit");
-    return;
+    if (self.isEditing) {
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        
+        [self setEditing:NO animated:YES];
+    } else {
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        
+        [self setEditing:YES animated:YES];
+    }
 }
 
 - (KHOItemsHeaderView *)headerView
@@ -78,6 +91,13 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     return _headerView;
 }
 
+#pragma mark - UITableViewDelegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Remove";
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -87,13 +107,39 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
+                             
+                                                            forIndexPath:indexPath];
     
     NSArray *items = [[KHOItemStore sharedStore] allItems];
     KHOItem *item = items[indexPath.row];
     
     cell.textLabel.text = [item description];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //Delete item from data source
+        NSArray *items = [[KHOItemStore sharedStore] allItems];
+        KHOItem *item = items[indexPath.row];
+        [[KHOItemStore sharedStore] removeItem:item];
+        
+        //Remove row from table view with an animation
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView
+    moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+           toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [[KHOItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row
+                                        toIndex:destinationIndexPath.row];
 }
 
 @end

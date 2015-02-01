@@ -16,5 +16,8 @@
 
 + (instancetype)sharedStore;
 - (KHOItem *)createItem;
+- (void)removeItem:(KHOItem *)item;
+- (void)moveItemAtIndex:(NSUInteger)fromIndex
+                toIndex:(NSUInteger)toIndex;
 
 @end
