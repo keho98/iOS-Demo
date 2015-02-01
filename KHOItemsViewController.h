@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KHOItemsHeaderView;
+
 @interface KHOItemsViewController : UITableViewController
+
+@property (nonatomic, strong) KHOItemsHeaderView *headerView;
 
 @end

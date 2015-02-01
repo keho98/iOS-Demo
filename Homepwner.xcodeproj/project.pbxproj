@@ -15,6 +15,7 @@
 		D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */; };
 		D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7081A7D7A27000726E3 /* KHOItem.m */; };
 		D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */; };
+		D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		D2BCF7081A7D7A27000726E3 /* KHOItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItem.m; sourceTree = "<group>"; };
 		D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemStore.h; sourceTree = "<group>"; };
 		D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemStore.m; sourceTree = "<group>"; };
+		D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemsHeaderView.h; sourceTree = "<group>"; };
+		D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemsHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 			children = (
 				D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */,
 				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
+				D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */,
+				D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */,
 				D2BCF7071A7D7A27000726E3 /* KHOItem.h */,
 				D2BCF7081A7D7A27000726E3 /* KHOItem.m */,
 				D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */,
@@ -230,6 +235,7 @@
 				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
 				D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */,
+				D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +418,7 @@
 				D2BCF7001A7D7860000726E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2BCF7011A7D7860000726E3 /* Build configuration list for PBXNativeTarget "HomepwnerTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				D2BCF7031A7D7860000726E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

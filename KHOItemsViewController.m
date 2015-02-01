@@ -10,6 +10,8 @@
 #import "KHOItemStore.h"
 #import "KHOItem.h"
 
+#import "KHOItemsHeaderView.h"
+
 @interface KHOItemsViewController () <UITableViewDataSource>
 
 @end
@@ -36,7 +38,44 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 {
     [super viewDidLoad];
     
+    UIView *header = (UIView *)self.headerView;
+    
+    self.tableView.tableHeaderView = header;
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+}
+
+- (void)addNewItem:(id)sender
+{
+    NSLog(@"Add");
+    return;
+}
+
+- (void)toggleEditingMode:(id)sender
+{
+    NSLog(@"Edit");
+    return;
+}
+
+- (KHOItemsHeaderView *)headerView
+{
+    if (!_headerView) {
+        CGRect frame = CGRectMake(0, 0, 0, 0);
+        frame.size.width = self.view.bounds.size.width;
+        frame.size.height = 100;
+        
+        KHOItemsHeaderView *view = [[KHOItemsHeaderView alloc] initWithFrame:frame];
+        [view.addItemButton addTarget:self
+                               action:@selector(addNewItem:)
+                     forControlEvents:UIControlEventTouchUpInside];
+        
+        [view.editItemButton addTarget:self
+                                action:@selector(toggleEditingMode:)
+                      forControlEvents:UIControlEventTouchUpInside];
+        
+        _headerView = view;
+    }
+    return _headerView;
 }
 
 #pragma mark - UITableViewDataSource
