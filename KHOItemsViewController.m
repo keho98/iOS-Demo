@@ -12,6 +12,8 @@
 
 #import "KHOItemsHeaderView.h"
 
+#define NUM_EXTRA_ROWS 1
+
 @interface KHOItemsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
@@ -102,19 +104,21 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[KHOItemStore sharedStore] allItems] count];
+    return [[[KHOItemStore sharedStore] allItems] count] + NUM_EXTRA_ROWS;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
-                             
                                                             forIndexPath:indexPath];
-    
+
     NSArray *items = [[KHOItemStore sharedStore] allItems];
-    KHOItem *item = items[indexPath.row];
-    
-    cell.textLabel.text = [item description];
+    if (indexPath.row < [items count]) {
+        KHOItem *item = items[indexPath.row];
+        cell.textLabel.text = [item description];
+    } else {
+        cell.textLabel.text = @"No more items!";
+    }
     return cell;
 }
 
@@ -138,8 +142,31 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
            toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    [[KHOItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row
-                                        toIndex:destinationIndexPath.row];
+    if (destinationIndexPath.row < [[[KHOItemStore sharedStore] allItems] count]) {
+        [[KHOItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row
+                                            toIndex:destinationIndexPath.row];
+    } else {
+        return;
+    }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    if (proposedDestinationIndexPath.row < [[[KHOItemStore sharedStore] allItems] count]) {
+        return proposedDestinationIndexPath;
+    } else {
+        return sourceIndexPath;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row < [[[KHOItemStore sharedStore] allItems] count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row < [[[KHOItemStore sharedStore] allItems] count];
 }
 
 @end
