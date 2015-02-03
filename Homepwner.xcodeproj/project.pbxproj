@@ -16,6 +16,7 @@
 		D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7081A7D7A27000726E3 /* KHOItem.m */; };
 		D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */; };
 		D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */; };
+		D2BCF7171A7F4FC9000726E3 /* KHODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7161A7F4FC9000726E3 /* KHODetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemStore.m; sourceTree = "<group>"; };
 		D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemsHeaderView.h; sourceTree = "<group>"; };
 		D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemsHeaderView.m; sourceTree = "<group>"; };
+		D2BCF7151A7F4FC9000726E3 /* KHODetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHODetailViewController.h; sourceTree = "<group>"; };
+		D2BCF7161A7F4FC9000726E3 /* KHODetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHODetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
 				D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */,
 				D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */,
+				D2BCF7151A7F4FC9000726E3 /* KHODetailViewController.h */,
+				D2BCF7161A7F4FC9000726E3 /* KHODetailViewController.m */,
 				D2BCF7071A7D7A27000726E3 /* KHOItem.h */,
 				D2BCF7081A7D7A27000726E3 /* KHOItem.m */,
 				D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */,
@@ -231,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */,
+				D2BCF7171A7F4FC9000726E3 /* KHODetailViewController.m in Sources */,
 				D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */,
 				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,

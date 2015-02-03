@@ -20,7 +20,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     KHOItemsViewController *ivc = [[KHOItemsViewController alloc] init];
-    self.window.rootViewController = ivc;
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ivc];
+    
+    self.window.rootViewController = nc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

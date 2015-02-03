@@ -22,21 +22,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        CGRect addButtonFrame = CGRectMake(180, 35, 50, 30);
+        CGRect addButtonFrame = CGRectMake(240, 25, 50, 30);
         self.addItemButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.addItemButton setTitle:@"New" forState:UIControlStateNormal];
         self.addItemButton.frame = addButtonFrame;
         
         [self addSubview:self.addItemButton];
         
-        CGRect editButtonFrame = CGRectMake(80, 35, 50, 30);
+        CGRect editButtonFrame = CGRectMake(80, 25, 50, 30);
         self.editItemButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.editItemButton setTitle:@"Edit" forState:UIControlStateNormal];
         self.editItemButton.frame = editButtonFrame;
         
         [self addSubview:self.editItemButton];
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor lightGrayColor];
     }
     return self;
 }

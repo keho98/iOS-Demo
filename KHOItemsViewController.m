@@ -11,6 +11,7 @@
 #import "KHOItem.h"
 
 #import "KHOItemsHeaderView.h"
+#import "KHODetailViewController.h"
 
 #define NUM_EXTRA_ROWS 1
 
@@ -77,7 +78,7 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     if (!_headerView) {
         CGRect frame = CGRectMake(0, 0, 0, 0);
         frame.size.width = self.view.bounds.size.width;
-        frame.size.height = 100;
+        frame.size.height = 80;
         
         KHOItemsHeaderView *view = [[KHOItemsHeaderView alloc] initWithFrame:frame];
         [view.addItemButton addTarget:self
@@ -167,6 +168,14 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return indexPath.row < [[[KHOItemStore sharedStore] allItems] count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KHODetailViewController *detailViewController = [[KHODetailViewController alloc] init];
+    detailViewController.item = [[[KHOItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end
