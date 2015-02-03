@@ -170,12 +170,19 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     return indexPath.row < [[[KHOItemStore sharedStore] allItems] count];
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.row < [[[KHOItemStore sharedStore] allItems] count];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KHODetailViewController *detailViewController = [[KHODetailViewController alloc] init];
-    detailViewController.item = [[[KHOItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
-    
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    if (indexPath.row < [[[KHOItemStore sharedStore] allItems] count]) {
+        KHODetailViewController *detailViewController = [[KHODetailViewController alloc] init];
+        detailViewController.item = [[[KHOItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
 }
 
 @end
