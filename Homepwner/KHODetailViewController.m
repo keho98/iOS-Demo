@@ -60,6 +60,7 @@
     fieldFrame.origin.y = labelFrame.origin.y;
     self.serialNumberField = [[UITextField alloc] initWithFrame:fieldFrame];
     self.serialNumberField.borderStyle = UITextBorderStyleRoundedRect;
+    self.serialNumberField.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:self.serialNumberField];
     
     labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
