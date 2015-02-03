@@ -48,6 +48,13 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
 - (void)addNewItem:(id)sender
 {
     KHOItem *newItem = [[KHOItemStore sharedStore] createItem];

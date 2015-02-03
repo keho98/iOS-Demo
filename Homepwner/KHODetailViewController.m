@@ -7,6 +7,7 @@
 //
 
 #import "KHODetailViewController.h"
+#import "KHOItem.h"
 
 #define LABEL_MARGIN 10.0
 
@@ -79,14 +80,36 @@
     [self.view addSubview:self.dateLabel];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    KHOItem *item = self.item;
+    
+    self.nameField.text = item.itemName;
+    self.serialNumberField.text = item.serialNumber;
+    self.valueField.text = [NSString stringWithFormat:@"%d", item.valueInDollars];
+    
+    static NSDateFormatter *dateFormatter;
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    }
+    
+    self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
 }
-*/
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    // Clear first responder
+    [self.view endEditing:YES];
+    
+    KHOItem *item = self.item;
+    item.itemName = self.nameField.text;
+    item.serialNumber = self.serialNumberField.text;
+    item.valueInDollars = [self.valueField.text intValue];
+}
 @end
