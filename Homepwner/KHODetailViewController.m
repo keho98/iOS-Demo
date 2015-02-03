@@ -112,4 +112,11 @@
     item.serialNumber = self.serialNumberField.text;
     item.valueInDollars = [self.valueField.text intValue];
 }
+
+- (void)setItem:(KHOItem *)item
+{
+    _item = item;
+    self.navigationItem.title = _item.itemName;
+}
+
 @end

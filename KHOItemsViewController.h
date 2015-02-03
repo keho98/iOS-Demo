@@ -12,6 +12,4 @@
 
 @interface KHOItemsViewController : UITableViewController
 
-@property (nonatomic, strong) KHOItemsHeaderView *headerView;
-
 @end

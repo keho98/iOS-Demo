@@ -10,7 +10,6 @@
 #import "KHOItemStore.h"
 #import "KHOItem.h"
 
-#import "KHOItemsHeaderView.h"
 #import "KHODetailViewController.h"
 
 #define NUM_EXTRA_ROWS 1
@@ -26,8 +25,15 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 - (instancetype)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
-    for (int i = 0; i < KHOItemsViewControllerNumberItems; i++) {
-        [[KHOItemStore sharedStore] createItem];
+    if (self) {
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Homepwner";
+        
+        UIBarButtonItem * bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
+        
+        navItem.rightBarButtonItem = bbi;
+        
+        navItem.leftBarButtonItem = self.editButtonItem;
     }
     return self;
 }
@@ -40,10 +46,6 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIView *header = (UIView *)self.headerView;
-    
-    self.tableView.tableHeaderView = header;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
@@ -65,40 +67,6 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     [self.tableView insertRowsAtIndexPaths:@[indexPath]
                           withRowAnimation:UITableViewRowAnimationTop];
     return;
-}
-
-- (void)toggleEditingMode:(id)sender
-{
-    if (self.isEditing) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        
-        [self setEditing:NO animated:YES];
-    } else {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        
-        [self setEditing:YES animated:YES];
-    }
-}
-
-- (KHOItemsHeaderView *)headerView
-{
-    if (!_headerView) {
-        CGRect frame = CGRectMake(0, 0, 0, 0);
-        frame.size.width = self.view.bounds.size.width;
-        frame.size.height = 80;
-        
-        KHOItemsHeaderView *view = [[KHOItemsHeaderView alloc] initWithFrame:frame];
-        [view.addItemButton addTarget:self
-                               action:@selector(addNewItem:)
-                     forControlEvents:UIControlEventTouchUpInside];
-        
-        [view.editItemButton addTarget:self
-                                action:@selector(toggleEditingMode:)
-                      forControlEvents:UIControlEventTouchUpInside];
-        
-        _headerView = view;
-    }
-    return _headerView;
 }
 
 #pragma mark - UITableViewDelegate
