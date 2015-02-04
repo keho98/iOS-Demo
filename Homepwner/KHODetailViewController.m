@@ -8,10 +8,11 @@
 
 #import "KHODetailViewController.h"
 #import "KHOItem.h"
+#import "KHOImageStore.h"
 
 #define LABEL_MARGIN 10.0
 
-@interface KHODetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface KHODetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @end
 
@@ -29,7 +30,10 @@
 
 - (void)loadView
 {
-    self.view = [[UIView alloc] init];
+    UIControl *mainView = [[UIControl alloc] init];
+    [mainView addTarget:self action:@selector(backgroundTapped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.view = mainView;
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat labelX = 25.0;
@@ -113,6 +117,11 @@
     }
     
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+    
+    NSString *itemKey = self.item.itemKey;
+    UIImage *imageToDisplay = [[KHOImageStore sharedStore] imageForKey:itemKey];
+    
+    self.imageView.image = imageToDisplay;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -148,15 +157,30 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
+- (void)backgroundTapped:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
 #pragma mark UIImagePickerController delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *img = info[UIImagePickerControllerOriginalImage];
     
+    [[KHOImageStore sharedStore] setImage:img forKey:self.item.itemKey];
+    
     self.imageView.image = img;
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark UITextField delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

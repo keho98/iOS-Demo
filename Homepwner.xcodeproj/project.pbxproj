@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839841A81F52E00855FDC /* KHOImageStore.m */; };
 		D2BCF6E11A7D7860000726E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E01A7D7860000726E3 /* main.m */; };
 		D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E31A7D7860000726E3 /* AppDelegate.m */; };
 		D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6EB1A7D7860000726E3 /* Images.xcassets */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D22839831A81F52E00855FDC /* KHOImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOImageStore.h; sourceTree = "<group>"; };
+		D22839841A81F52E00855FDC /* KHOImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageStore.m; sourceTree = "<group>"; };
 		D2BCF6DB1A7D7860000726E3 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BCF6DF1A7D7860000726E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BCF6E01A7D7860000726E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 			children = (
 				D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */,
 				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
+				D22839831A81F52E00855FDC /* KHOImageStore.h */,
+				D22839841A81F52E00855FDC /* KHOImageStore.m */,
 				D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */,
 				D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */,
 				D2BCF7151A7F4FC9000726E3 /* KHODetailViewController.h */,
@@ -239,6 +244,7 @@
 				D2BCF7171A7F4FC9000726E3 /* KHODetailViewController.m in Sources */,
 				D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */,
 				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
+				D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
 				D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */,
 				D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */,

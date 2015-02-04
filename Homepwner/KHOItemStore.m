@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 kho. All rights reserved.
 //
 
+#import "KHOImageStore.h"
 #import "KHOItemStore.h"
 #import "KHOItem.h"
+
 
 @interface KHOItemStore ()
 
@@ -57,6 +59,10 @@
 
 - (void)removeItem:(KHOItem *)item
 {
+    NSString *key = item.itemKey;
+    
+    [[KHOImageStore sharedStore] deleteImageForKey:key];
+    
     [self.privateItems removeObjectIdenticalTo:item];
 }
 

@@ -15,6 +15,8 @@
 @property (nonatomic) int valueInDollars;
 @property (nonatomic, readonly, strong) NSDate *dateCreated;
 
+@property (nonatomic, copy) NSString *itemKey;
+
 + (instancetype)randomItem;
 
 // Designated initializer for KHOItem
