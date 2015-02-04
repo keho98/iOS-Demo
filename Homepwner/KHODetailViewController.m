@@ -11,7 +11,7 @@
 
 #define LABEL_MARGIN 10.0
 
-@interface KHODetailViewController ()
+@interface KHODetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @end
 
@@ -33,9 +33,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     CGFloat labelX = 25.0;
-    CGFloat labelY = 100.0;
+    CGFloat labelY = 80.0;
     CGFloat labelWidth = 50.0;
-    CGFloat labelHeight = 35.0;
+    CGFloat labelHeight = 30.0;
     
     CGFloat fieldX = labelX + labelWidth + LABEL_MARGIN;
     CGFloat fieldY = labelY;
@@ -79,6 +79,20 @@
     self.dateLabel.text = @"Label";
     self.dateLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.dateLabel];
+    
+    CGRect imageFrame = CGRectMake(labelFrame.origin.x, labelFrame.origin.y + labelFrame.size.height + 10.0, labelFrame.size.width, labelFrame.size.width);
+    self.imageView = [[UIImageView alloc] initWithFrame:imageFrame];
+    self.imageView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:self.imageView];
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.frame = CGRectMake(0, 524, 324,  44.0);
+    self.toolbar = toolbar;
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
+    [toolbar setItems:@[barButtonItem]];
+    [self.view addSubview:toolbar];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -118,6 +132,31 @@
 {
     _item = item;
     self.navigationItem.title = _item.itemName;
+}
+
+- (void)takePicture:(id)sender
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+#pragma mark UIImagePickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *img = info[UIImagePickerControllerOriginalImage];
+    
+    self.imageView.image = img;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

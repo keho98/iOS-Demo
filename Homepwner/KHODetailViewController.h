@@ -17,6 +17,9 @@
 @property (nonatomic, strong) UITextField *nameField;
 @property (nonatomic, strong) UITextField *serialNumberField;
 @property (nonatomic, strong) UITextField *valueField;
+
 @property (nonatomic, strong) UILabel *dateLabel;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIToolbar *toolbar;
 
 @end
