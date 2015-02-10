@@ -84,18 +84,48 @@
     self.dateLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.dateLabel];
     
-    CGRect imageFrame = CGRectMake(labelFrame.origin.x, labelFrame.origin.y + labelFrame.size.height + 10.0, labelFrame.size.width, labelFrame.size.width);
-    self.imageView = [[UIImageView alloc] initWithFrame:imageFrame];
+    self.imageView = [[UIImageView alloc] initWithImage:nil];
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.imageView.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.imageView];
     
     UIToolbar *toolbar = [[UIToolbar alloc] init];
-    toolbar.frame = CGRectMake(0, 524, 324,  44.0);
+    toolbar.translatesAutoresizingMaskIntoConstraints = NO;
     self.toolbar = toolbar;
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
     [toolbar setItems:@[barButtonItem]];
     [self.view addSubview:toolbar];
+    
+    NSDictionary *nameMap = @{@"imageView" : self.imageView,
+                              @"dateLabel" : self.dateLabel,
+                              @"toolbar"   : self.toolbar};
+    
+    // imageView Constraints
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:nameMap];
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:nameMap];
+    [self.view addConstraints:horizontalConstraints];
+    [self.view addConstraints:verticalConstraints];
+    
+    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolbar]|"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:nameMap];
+    
+    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolbar(==44)]|"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:nameMap];
+    
+    [self.view addConstraints:horizontalConstraints];
+    [self.view addConstraints:verticalConstraints];
     
 }
 
