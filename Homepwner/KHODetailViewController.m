@@ -77,10 +77,11 @@
     self.valueField.borderStyle = UITextBorderStyleRoundedRect;
     [self.view addSubview:self.valueField];
     
-    labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
-    labelFrame.size.width = fieldFrame.origin.x + fieldFrame.size.width - labelFrame.origin.x;
-    self.dateLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    //labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
+    //labelFrame.size.width = fieldFrame.origin.x + fieldFrame.size.width - labelFrame.origin.x;
+    self.dateLabel = [[UILabel alloc] init];
     self.dateLabel.text = @"Label";
+    self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.dateLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:self.dateLabel];
     
@@ -97,17 +98,36 @@
     [toolbar setItems:@[barButtonItem]];
     [self.view addSubview:toolbar];
     
-    NSDictionary *nameMap = @{@"imageView" : self.imageView,
-                              @"dateLabel" : self.dateLabel,
-                              @"toolbar"   : self.toolbar};
+    NSDictionary *nameMap = @{@"imageView"         : self.imageView,
+                              @"dateLabel"         : self.dateLabel,
+                              @"toolbar"           : self.toolbar,
+                              @"valueField"        : self.valueField,
+                              @"serialNumberField" : self.serialNumberField,
+                              @"nameField"         : self.nameField
+                              };
     
-    // imageView Constraints
-    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
+    
+    // dateLabel Constraints
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dateLabel]|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:nameMap];
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[valueField]-[dateLabel(==44)]"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
     
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
+    [self.view addConstraints:horizontalConstraints];
+    [self.view addConstraints:verticalConstraints];
+    
+    // imageView Constraints
+    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:nameMap];
+    
+    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
