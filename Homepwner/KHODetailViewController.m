@@ -77,8 +77,6 @@
     self.valueField.borderStyle = UITextBorderStyleRoundedRect;
     [self.view addSubview:self.valueField];
     
-    //labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
-    //labelFrame.size.width = fieldFrame.origin.x + fieldFrame.size.width - labelFrame.origin.x;
     self.dateLabel = [[UILabel alloc] init];
     self.dateLabel.text = @"Label";
     self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -98,14 +96,14 @@
     [toolbar setItems:@[barButtonItem]];
     [self.view addSubview:toolbar];
     
-    NSDictionary *nameMap = @{@"imageView"         : self.imageView,
+    NSDictionary *nameMap = @{
+                              @"imageView"         : self.imageView,
                               @"dateLabel"         : self.dateLabel,
                               @"toolbar"           : self.toolbar,
                               @"valueField"        : self.valueField,
                               @"serialNumberField" : self.serialNumberField,
                               @"nameField"         : self.nameField
                               };
-    
     
     // dateLabel Constraints
     NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dateLabel]|"
@@ -120,6 +118,16 @@
     
     [self.view addConstraints:horizontalConstraints];
     [self.view addConstraints:verticalConstraints];
+    
+    // valueField Constraints
+    
+    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[valueLabel(==50)]-[valueField]-|"
+                                                                    options:0
+                                                                    metrics:nil
+                                                                      views:nameMap];
+    
+    
+    [self.view addConstraints:horizontalConstraints];
     
     // imageView Constraints
     horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
