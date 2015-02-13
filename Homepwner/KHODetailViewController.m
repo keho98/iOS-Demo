@@ -12,7 +12,10 @@
 
 #define LABEL_MARGIN 10.0
 
-@interface KHODetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface KHODetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate>
+
+@property (strong, nonatomic) UIPopoverController *imagePickerPopover;
+@property (weak, nonatomic) UIBarButtonItem *cameraButton;
 
 @end
 
@@ -94,6 +97,7 @@
     
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
     [toolbar setItems:@[barButtonItem]];
+    self.cameraButton = barButtonItem;
     [self.view addSubview:toolbar];
     
     NSDictionary *nameMap = @{
@@ -164,6 +168,9 @@
 {
     [super viewWillAppear:animated];
     
+    UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
+    [self prepareViewsForOrientation:io];
+    
     KHOItem *item = self.item;
     
     self.nameField.text = item.itemName;
@@ -221,6 +228,27 @@
 - (void)backgroundTapped:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+- (void)prepareViewsForOrientation:(UIInterfaceOrientation)orientation
+{
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return;
+    }
+    
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        self.imageView.hidden = YES;
+        self.cameraButton.enabled = NO;
+    } else {
+        self.imageView.hidden = NO;
+        self.cameraButton.enabled = YES;
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+    [self prepareViewsForOrientation: toInterfaceOrientation];
 }
 
 #pragma mark UIImagePickerController delegate
