@@ -102,7 +102,8 @@
                               @"toolbar"           : self.toolbar,
                               @"valueField"        : self.valueField,
                               @"serialNumberField" : self.serialNumberField,
-                              @"nameField"         : self.nameField
+                              @"nameField"         : self.nameField,
+                              @"valueLabel"        : valueLabel
                               };
     
     // dateLabel Constraints
@@ -111,7 +112,7 @@
                                                                              metrics:nil
                                                                                views:nameMap];
     
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[valueField]-[dateLabel(==44)]"
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[valueField(==valueLabel)]-[dateLabel(==44)]"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
@@ -121,10 +122,12 @@
     
     // valueField Constraints
     
-    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[valueLabel(==50)]-[valueField]-|"
+    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[valueLabel(==30)]-[valueField]-|"
                                                                     options:0
                                                                     metrics:nil
                                                                       views:nameMap];
+    
+    
     
     
     [self.view addConstraints:horizontalConstraints];
