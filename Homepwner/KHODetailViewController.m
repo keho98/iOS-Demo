@@ -21,6 +21,34 @@
 
 @implementation KHODetailViewController
 
+- (instancetype)initForNewItem:(BOOL)isNew
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        if (isNew) {
+            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                      target:self
+                                                                                      action:@selector(save:)];
+            self.navigationItem.rightBarButtonItem = doneItem;
+            
+            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                        target:self
+                                                                                        action:@selector(cancel:)];
+            self.navigationItem.leftBarButtonItem = cancelItem;
+        }
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil
+{
+    [NSException raise:@"Wrong initializer"
+                format:@"User initForNewItem:"];
+    return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -213,6 +241,12 @@
 
 - (void)takePicture:(id)sender
 {
+    if ([self.imagePickerPopover isPopoverVisible]) {
+        [self.imagePickerPopover dismissPopoverAnimated:YES];
+        self.imagePickerPopover = nil;
+        return;
+    }
+    
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -222,7 +256,18 @@
     }
     
     imagePicker.delegate = self;
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        
+        self.imagePickerPopover.delegate = self;
+        
+        [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                        permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                        animated:YES];
+    } else {
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 
 - (void)backgroundTapped:(id)sender
@@ -261,7 +306,13 @@
     
     self.imageView.image = img;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.imagePickerPopover) {
+        
+        [self.imagePickerPopover dismissPopoverAnimated:YES];
+        self.imagePickerPopover = nil;
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark UITextField delegate
@@ -270,6 +321,13 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark UIPopoverController delegate
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.imagePickerPopover = nil;
 }
 
 @end

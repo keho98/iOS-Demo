@@ -12,6 +12,8 @@
 
 @interface KHODetailViewController : UIViewController
 
+- (instancetype)initForNewItem:(BOOL)isNew;
+
 @property (nonatomic, strong) KHOItem *item;
 
 @property (nonatomic, strong) UITextField *nameField;
