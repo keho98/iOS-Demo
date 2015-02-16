@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 @property (weak, nonatomic) UIBarButtonItem *cameraButton;
+@property (strong, nonatomic) UILabel *valueLabel;
 
 @end
 
@@ -101,12 +102,15 @@
     
     labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
     UILabel *valueLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    //self.valueLabel = valueLabel;
+    valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
     valueLabel.text = @"Value";
     [self.view addSubview:valueLabel];
     
     fieldFrame.origin.y = labelFrame.origin.y;
     self.valueField = [[UITextField alloc] initWithFrame:fieldFrame];
     self.valueField.borderStyle = UITextBorderStyleRoundedRect;
+    self.valueField.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.valueField];
     
     self.dateLabel = [[UILabel alloc] init];
@@ -117,6 +121,7 @@
     
     self.imageView = [[UIImageView alloc] initWithImage:nil];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.imageView.autoresizesSubviews = NO;
     self.imageView.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.imageView];
     
@@ -145,7 +150,7 @@
                                                                              metrics:nil
                                                                                views:nameMap];
     
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[valueField(==valueLabel)]-[dateLabel(==44)]"
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField(==30)]-[dateLabel(==44)]"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
@@ -155,14 +160,19 @@
     
     // valueField Constraints
     
-    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[valueLabel(==30)]-[valueField]-|"
+    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel(==50)]-[valueField]-|"
                                                                     options:0
                                                                     metrics:nil
                                                                       views:nameMap];
     
+    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel(==valueField)]"
+                                                                  options:0
+                                                                  metrics:nil
+                                                                    views:nameMap];
     
     
     
+    [self.view addConstraints:verticalConstraints];
     [self.view addConstraints:horizontalConstraints];
     
     // imageView Constraints
@@ -171,7 +181,7 @@
                                                                            metrics:nil
                                                                              views:nameMap];
     
-    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
+    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar(==44)]|"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
@@ -183,13 +193,7 @@
                                                                     metrics:nil
                                                                       views:nameMap];
     
-    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolbar(==44)]|"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                      views:nameMap];
-    
     [self.view addConstraints:horizontalConstraints];
-    [self.view addConstraints:verticalConstraints];
     
 }
 
