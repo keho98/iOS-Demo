@@ -77,6 +77,7 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];[self dismissViewControllerAnimated:YES completion:nil];
     
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    //Interrupts presentation in oldest ancestor self.definesPresentationContext = YES;
     
     [self presentViewController:navController animated:YES completion:nil];
     
