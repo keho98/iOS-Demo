@@ -9,6 +9,7 @@
 #import "KHODetailViewController.h"
 #import "KHOItem.h"
 #import "KHOImageStore.h"
+#import "KHOItemStore.h"
 
 #define LABEL_MARGIN 10.0
 
@@ -294,6 +295,20 @@
                                          duration:(NSTimeInterval)duration
 {
     [self prepareViewsForOrientation: toInterfaceOrientation];
+}
+
+- (void)save:(id)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:self.dismissBlock];
+}
+
+- (void)cancel:(id)sender
+{
+    [[KHOItemStore sharedStore] removeItem:self.item];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:self.dismissBlock];
 }
 
 #pragma mark UIImagePickerController delegate

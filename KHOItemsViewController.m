@@ -61,11 +61,25 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 {
     KHOItem *newItem = [[KHOItemStore sharedStore] createItem];
     
-    NSInteger lastRow = [[[KHOItemStore sharedStore] allItems] indexOfObject:newItem];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+//    NSInteger lastRow = [[[KHOItemStore sharedStore] allItems] indexOfObject:newItem];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+//    
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath]
+//                          withRowAnimation:UITableViewRowAnimationTop];
     
-    [self.tableView insertRowsAtIndexPaths:@[indexPath]
-                          withRowAnimation:UITableViewRowAnimationTop];
+    KHODetailViewController *detailViewController = [[KHODetailViewController alloc] initForNewItem:YES];
+    detailViewController.item = newItem;
+    
+    detailViewController.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];[self dismissViewControllerAnimated:YES completion:nil];
+    
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentViewController:navController animated:YES completion:nil];
+    
     return;
 }
 
@@ -153,7 +167,7 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row < [[[KHOItemStore sharedStore] allItems] count]) {
-        KHODetailViewController *detailViewController = [[KHODetailViewController alloc] init];
+        KHODetailViewController *detailViewController = [[KHODetailViewController alloc] initForNewItem:NO];
         detailViewController.item = [[[KHOItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
         
         [self.navigationController pushViewController:detailViewController animated:YES];

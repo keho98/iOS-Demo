@@ -24,4 +24,6 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIToolbar *toolbar;
 
+@property (nonatomic, copy) void (^dismissBlock)(void);
+
 @end
