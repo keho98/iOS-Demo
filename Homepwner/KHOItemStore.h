@@ -19,5 +19,6 @@
 - (void)removeItem:(KHOItem *)item;
 - (void)moveItemAtIndex:(NSUInteger)fromIndex
                 toIndex:(NSUInteger)toIndex;
+- (BOOL)saveChanges;
 
 @end

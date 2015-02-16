@@ -78,4 +78,24 @@
     [self.privateItems insertObject:item atIndex:toIndex];
 }
 
+- (NSString *)itemArchivePath
+{
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentDirectory = [documentDirectories firstObject];
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+}
+
+- (BOOL)saveChanges
+{
+    NSString *path = [self itemArchivePath];
+    #if TARGET_IPHONE_SIMULATOR
+    // where are you?
+    NSLog(@"Path %@", path);
+    #endif
+    
+    return [NSKeyedArchiver archiveRootObject:self.privateItems
+                                       toFile:path];
+}
+
 @end
