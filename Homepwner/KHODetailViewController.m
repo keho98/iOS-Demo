@@ -17,7 +17,6 @@
 
 @property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 @property (weak, nonatomic) UIBarButtonItem *cameraButton;
-@property (strong, nonatomic) UILabel *valueLabel;
 
 @end
 
@@ -102,7 +101,6 @@
     
     labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
     UILabel *valueLabel = [[UILabel alloc] initWithFrame:labelFrame];
-    //self.valueLabel = valueLabel;
     valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
     valueLabel.text = @"Value";
     [self.view addSubview:valueLabel];
@@ -320,6 +318,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *img = info[UIImagePickerControllerOriginalImage];
+    
+    [self.item setThumbnailFromImage:img];
     
     [[KHOImageStore sharedStore] setImage:img forKey:self.item.itemKey];
     

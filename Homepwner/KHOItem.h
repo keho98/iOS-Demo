@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 kho. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface KHOItem : NSObject <NSCoding>
 
@@ -16,6 +16,7 @@
 @property (nonatomic, readonly, strong) NSDate *dateCreated;
 
 @property (nonatomic, copy) NSString *itemKey;
+@property (nonatomic, strong) UIImage *thumbnail;
 
 + (instancetype)randomItem;
 
@@ -25,5 +26,6 @@
                     serialNumber:(NSString *)sNumber;
 
 - (instancetype)initWithItemName:(NSString *)name;
+- (void)setThumbnailFromImage:(UIImage *)image;
 
 @end

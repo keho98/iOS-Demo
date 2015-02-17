@@ -9,6 +9,7 @@
 #import "KHOItemsViewController.h"
 #import "KHOItemStore.h"
 #import "KHOItem.h"
+#import "KHOItemCell.h"
 
 #import "KHODetailViewController.h"
 
@@ -46,6 +47,10 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UINib *nib = [UINib nibWithNibName:@"KHOItemCell" bundle:nil];
+    [self.tableView registerNib:nib
+         forCellReuseIdentifier:@"KHOItemCell"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
@@ -100,14 +105,24 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
-                                                            forIndexPath:indexPath];
+    UITableViewCell *cell;
 
     NSArray *items = [[KHOItemStore sharedStore] allItems];
     if (indexPath.row < [items count]) {
         KHOItem *item = items[indexPath.row];
-        cell.textLabel.text = [item description];
+        
+        KHOItemCell *khoCell = [tableView dequeueReusableCellWithIdentifier:@"KHOItemCell"
+                                               forIndexPath:indexPath];
+        khoCell.nameLabel.text = item.itemName;
+        khoCell.serialNumberLabel.text = item.serialNumber;
+        khoCell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+        
+        khoCell.thumbnailView.image = item.thumbnail;
+        
+        cell = khoCell;
     } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
+                                          forIndexPath:indexPath];
         cell.textLabel.text = @"No more items!";
     }
     return cell;
