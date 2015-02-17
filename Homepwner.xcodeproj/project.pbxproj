@@ -20,6 +20,7 @@
 		D2BCF7171A7F4FC9000726E3 /* KHODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7161A7F4FC9000726E3 /* KHODetailViewController.m */; };
 		D2EAB48A1A92BEF900609225 /* KHOItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EAB4891A92BEF900609225 /* KHOItemCell.m */; };
 		D2EAB48C1A92BF1600609225 /* KHOItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */; };
+		D2EAB48F1A931D8B00609225 /* KHOImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		D2EAB4881A92BEF900609225 /* KHOItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemCell.h; sourceTree = "<group>"; };
 		D2EAB4891A92BEF900609225 /* KHOItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemCell.m; sourceTree = "<group>"; };
 		D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHOItemCell.xib; sourceTree = "<group>"; };
+		D2EAB48D1A931D8B00609225 /* KHOImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOImageViewController.h; sourceTree = "<group>"; };
+		D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 			children = (
 				D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */,
 				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
+				D2EAB48D1A931D8B00609225 /* KHOImageViewController.h */,
+				D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */,
 				D22839831A81F52E00855FDC /* KHOImageStore.h */,
 				D22839841A81F52E00855FDC /* KHOImageStore.m */,
 				D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */,
@@ -256,6 +261,7 @@
 				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
 				D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
+				D2EAB48F1A931D8B00609225 /* KHOImageViewController.m in Sources */,
 				D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */,
 				D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */,
 			);

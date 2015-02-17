@@ -11,11 +11,16 @@
 #import "KHOItem.h"
 #import "KHOItemCell.h"
 
+#import "KHOImageStore.h"
+#import "KHOImageViewController.h"
+
 #import "KHODetailViewController.h"
 
 #define NUM_EXTRA_ROWS 1
 
-@interface KHOItemsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface KHOItemsViewController () <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
+
+@property (strong,nonatomic) UIPopoverController *imagePopover;
 
 @end
 
@@ -119,6 +124,39 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
         
         khoCell.thumbnailView.image = item.thumbnail;
         
+        __weak KHOItemCell *weakCell = khoCell;
+        
+        khoCell.actionBlock = ^{
+            NSLog(@"Going to show image for %@", item);
+            
+            KHOItemCell *strongCell = weakCell;
+            
+            if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                
+                NSString *itemKey = item.itemKey;
+                
+                UIImage *img = [[KHOImageStore sharedStore] imageForKey:itemKey];
+                if (!img) {
+                    return;
+                }
+                
+                CGRect rect = [self.view convertRect:strongCell.thumbnailView.bounds
+                                            fromView:strongCell.thumbnailView];
+                
+                KHOImageViewController *ivc = [[KHOImageViewController alloc] init];
+                ivc.image = img;
+                
+                self.imagePopover = [[UIPopoverController alloc] initWithContentViewController:ivc];
+                self.imagePopover.delegate = self;
+                self.imagePopover.popoverContentSize = CGSizeMake(600, 600);
+                
+                [self.imagePopover presentPopoverFromRect:rect
+                                                   inView:self.view
+                                 permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                 animated:YES];
+            }
+        };
+        
         cell = khoCell;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"
@@ -188,6 +226,11 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
         
         [self.navigationController pushViewController:detailViewController animated:YES];
     }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.imagePopover = nil;
 }
 
 @end
