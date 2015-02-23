@@ -157,7 +157,7 @@
                                                                              metrics:nil
                                                                                views:nameMap];
     
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField(==30)]-[dateLabel(==44)]"
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField(==30)]-[dateLabel]"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
@@ -167,12 +167,12 @@
     
     // valueField Constraints
     
-    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel(==50)]-[valueField]-|"
+    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel]-[valueField]-|"
                                                                     options:0
                                                                     metrics:nil
                                                                       views:nameMap];
     
-    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel(==valueField)]"
+    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel]"
                                                                   options:0
                                                                   metrics:nil
                                                                     views:nameMap];
