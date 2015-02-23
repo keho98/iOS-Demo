@@ -20,9 +20,15 @@
 @property (nonatomic, strong) UITextField *serialNumberField;
 @property (nonatomic, strong) UITextField *valueField;
 
-@property (nonatomic, strong) UILabel *dateLabel;
+
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIToolbar *toolbar;
+
+@property (nonatomic, strong) UILabel *dateLabel;
+@property (nonatomic, strong) UILabel *valueLabel;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *serialNumberLabel;
+
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
 

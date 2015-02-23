@@ -82,6 +82,7 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:labelFrame];
     nameLabel.text = @"Name";
     [self.view addSubview:nameLabel];
+    self.nameLabel = nameLabel;
     
     CGRect fieldFrame = CGRectMake(fieldX, fieldY, fieldWidth, fieldHeight);
     self.nameField = [[UITextField alloc] initWithFrame:fieldFrame];
@@ -92,6 +93,7 @@
     UILabel *serialLabel = [[UILabel alloc] initWithFrame:labelFrame];
     serialLabel.text = @"Serial";
     [self.view addSubview:serialLabel];
+    self.serialNumberLabel = serialLabel;
     
     fieldFrame.origin.y = labelFrame.origin.y;
     self.serialNumberField = [[UITextField alloc] initWithFrame:fieldFrame];
@@ -104,6 +106,7 @@
     valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
     valueLabel.text = @"Value";
     [self.view addSubview:valueLabel];
+    self.valueLabel = valueLabel;
     
     fieldFrame.origin.y = labelFrame.origin.y;
     self.valueField = [[UITextField alloc] initWithFrame:fieldFrame];
