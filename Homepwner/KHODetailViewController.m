@@ -148,7 +148,8 @@
                               @"valueField"        : self.valueField,
                               @"serialNumberField" : self.serialNumberField,
                               @"nameField"         : self.nameField,
-                              @"valueLabel"        : valueLabel
+                              @"valueLabel"        : self.valueLabel,
+                              @"serialNumberLabel" : self.serialNumberLabel
                               };
     
     // dateLabel Constraints
@@ -157,7 +158,7 @@
                                                                              metrics:nil
                                                                                views:nameMap];
     
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField(==30)]-[dateLabel]"
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField]-[dateLabel]-[imageView]-[toolbar(==44)]|"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
@@ -165,7 +166,7 @@
     // valueField Constraints
     
     horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
-                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel]-[valueField]-|"
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel(==serialNumberLabel)]-[valueField(==nameField)]"
                                                                     options:0
                                                                     metrics:nil
                                                                       views:nameMap]];
@@ -179,12 +180,6 @@
     // imageView Constraints
     horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
                              [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
-                                                                           options:0
-                                                                           metrics:nil
-                                                                             views:nameMap]];
-    
-    verticalConstraints = [verticalConstraints arrayByAddingObjectsFromArray:
-                           [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar(==44)]|"
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap]];
