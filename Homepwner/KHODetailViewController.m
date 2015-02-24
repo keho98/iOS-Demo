@@ -161,45 +161,40 @@
                                                                            options:0
                                                                            metrics:nil
                                                                              views:nameMap];
-    
-    [self.view addConstraints:horizontalConstraints];
-    [self.view addConstraints:verticalConstraints];
-    
+
     // valueField Constraints
     
-    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel]-[valueField]-|"
+    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel]-[valueField]-|"
                                                                     options:0
                                                                     metrics:nil
-                                                                      views:nameMap];
+                                                                      views:nameMap]];
     
-    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel]"
+    verticalConstraints = [verticalConstraints arrayByAddingObjectsFromArray:
+                           [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel]"
                                                                   options:0
                                                                   metrics:nil
-                                                                    views:nameMap];
-    
-    
-    
-    [self.view addConstraints:verticalConstraints];
-    [self.view addConstraints:horizontalConstraints];
+                                                                    views:nameMap]];
     
     // imageView Constraints
-    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
+    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
                                                                            options:0
                                                                            metrics:nil
-                                                                             views:nameMap];
+                                                                             views:nameMap]];
     
-    verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar(==44)]|"
+    verticalConstraints = [verticalConstraints arrayByAddingObjectsFromArray:
+                           [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar(==44)]|"
                                                                            options:0
                                                                            metrics:nil
-                                                                             views:nameMap];
-    [self.view addConstraints:horizontalConstraints];
-    [self.view addConstraints:verticalConstraints];
+                                                                             views:nameMap]];
     
-    horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolbar]|"
+    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolbar]|"
                                                                     options:0
                                                                     metrics:nil
-                                                                      views:nameMap];
+                                                                      views:nameMap]];
     
+    [self.view addConstraints:verticalConstraints];
     [self.view addConstraints:horizontalConstraints];
     
 }
