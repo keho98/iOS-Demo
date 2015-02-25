@@ -74,123 +74,8 @@
     self.view = mainView;
     self.view.backgroundColor = [UIColor whiteColor];
     
-    CGFloat labelX = 25.0;
-    CGFloat labelY = 80.0;
-    CGFloat labelWidth = 50.0;
-    CGFloat labelHeight = 30.0;
-    
-    CGFloat fieldX = labelX + labelWidth + LABEL_MARGIN;
-    CGFloat fieldY = labelY;
-    CGFloat fieldWidth = 200.0;
-    CGFloat fieldHeight = labelHeight;
-    
-    CGRect labelFrame = CGRectMake(labelX, labelY, labelWidth, labelHeight);
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:labelFrame];
-    nameLabel.text = @"Name";
-    [self.view addSubview:nameLabel];
-    self.nameLabel = nameLabel;
-    
-    CGRect fieldFrame = CGRectMake(fieldX, fieldY, fieldWidth, fieldHeight);
-    self.nameField = [[UITextField alloc] initWithFrame:fieldFrame];
-    self.nameField.borderStyle = UITextBorderStyleRoundedRect;
-    [self.view addSubview:self.nameField];
-    
-    labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
-    UILabel *serialLabel = [[UILabel alloc] initWithFrame:labelFrame];
-    serialLabel.text = @"Serial";
-    [self.view addSubview:serialLabel];
-    self.serialNumberLabel = serialLabel;
-    
-    fieldFrame.origin.y = labelFrame.origin.y;
-    self.serialNumberField = [[UITextField alloc] initWithFrame:fieldFrame];
-    self.serialNumberField.borderStyle = UITextBorderStyleRoundedRect;
-    self.serialNumberField.keyboardType = UIKeyboardTypeNumberPad;
-    [self.view addSubview:self.serialNumberField];
-    
-    labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
-    UILabel *valueLabel = [[UILabel alloc] initWithFrame:labelFrame];
-    valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    valueLabel.text = @"Value";
-    [self.view addSubview:valueLabel];
-    self.valueLabel = valueLabel;
-    
-    fieldFrame.origin.y = labelFrame.origin.y;
-    self.valueField = [[UITextField alloc] initWithFrame:fieldFrame];
-    self.valueField.borderStyle = UITextBorderStyleRoundedRect;
-    self.valueField.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:self.valueField];
-    
-    self.dateLabel = [[UILabel alloc] init];
-    self.dateLabel.text = @"Label";
-    self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.dateLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:self.dateLabel];
-    
-    self.imageView = [[UIImageView alloc] initWithImage:nil];
-    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.imageView.autoresizesSubviews = NO;
-    self.imageView.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:self.imageView];
-    
-    UIToolbar *toolbar = [[UIToolbar alloc] init];
-    toolbar.translatesAutoresizingMaskIntoConstraints = NO;
-    self.toolbar = toolbar;
-    
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
-    [toolbar setItems:@[barButtonItem]];
-    self.cameraButton = barButtonItem;
-    [self.view addSubview:toolbar];
-    
-    NSDictionary *nameMap = @{
-                              @"imageView"         : self.imageView,
-                              @"dateLabel"         : self.dateLabel,
-                              @"toolbar"           : self.toolbar,
-                              @"valueField"        : self.valueField,
-                              @"serialNumberField" : self.serialNumberField,
-                              @"nameField"         : self.nameField,
-                              @"valueLabel"        : self.valueLabel,
-                              @"serialNumberLabel" : self.serialNumberLabel
-                              };
-    
-    // dateLabel Constraints
-    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dateLabel]|"
-                                                                             options:0
-                                                                             metrics:nil
-                                                                               views:nameMap];
-    
-    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField]-[dateLabel]-[imageView]-[toolbar(==44)]|"
-                                                                           options:0
-                                                                           metrics:nil
-                                                                             views:nameMap];
-
-    // valueField Constraints
-    
-    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
-                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel(==serialNumberLabel)]-[valueField(==nameField)]"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                      views:nameMap]];
-    
-    verticalConstraints = [verticalConstraints arrayByAddingObjectsFromArray:
-                           [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel]"
-                                                                  options:0
-                                                                  metrics:nil
-                                                                    views:nameMap]];
-    
-    // imageView Constraints
-    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
-                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
-                                                                           options:0
-                                                                           metrics:nil
-                                                                             views:nameMap]];
-    
-    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray: [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolbar]|"
-                                                                    options:0
-                                                                    metrics:nil
-                                                                      views:nameMap]];
-    
-    [self.view addConstraints:verticalConstraints];
-    [self.view addConstraints:horizontalConstraints];
+    [self layoutSubviews];
+    [self addConstraints];
     
 }
 
@@ -325,6 +210,131 @@
     self.nameField.font = font;
     self.serialNumberField.font = font;
     self.valueField.font = font;
+}
+
+- (void)addConstraints
+{
+    NSDictionary *nameMap = @{
+                              @"imageView"         : self.imageView,
+                              @"dateLabel"         : self.dateLabel,
+                              @"toolbar"           : self.toolbar,
+                              @"valueField"        : self.valueField,
+                              @"serialNumberField" : self.serialNumberField,
+                              @"nameField"         : self.nameField,
+                              @"valueLabel"        : self.valueLabel,
+                              @"serialNumberLabel" : self.serialNumberLabel
+                              };
+    
+    // dateLabel Constraints
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dateLabel]|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:nameMap];
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueField]-[dateLabel]-[imageView]-[toolbar(==44)]|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:nameMap];
+    
+    // valueField Constraints
+    
+    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel(==serialNumberLabel)]-[valueField(==nameField)]"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:nameMap]];
+    
+    verticalConstraints = [verticalConstraints arrayByAddingObjectsFromArray:
+                           [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[valueLabel]"
+                                                                   options:0
+                                                                   metrics:nil
+                                                                     views:nameMap]];
+    
+    // imageView Constraints
+    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:nameMap]];
+    
+    horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolbar]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:nameMap]];
+    
+    [self.view addConstraints:verticalConstraints];
+    [self.view addConstraints:horizontalConstraints];
+}
+
+- (void)layoutSubviews
+{
+    CGFloat labelX = 25.0;
+    CGFloat labelY = 80.0;
+    CGFloat labelWidth = 50.0;
+    CGFloat labelHeight = 30.0;
+    
+    CGFloat fieldX = labelX + labelWidth + LABEL_MARGIN;
+    CGFloat fieldY = labelY;
+    CGFloat fieldWidth = 200.0;
+    CGFloat fieldHeight = labelHeight;
+    
+    CGRect labelFrame = CGRectMake(labelX, labelY, labelWidth, labelHeight);
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    nameLabel.text = @"Name";
+    [self.view addSubview:nameLabel];
+    self.nameLabel = nameLabel;
+    
+    CGRect fieldFrame = CGRectMake(fieldX, fieldY, fieldWidth, fieldHeight);
+    self.nameField = [[UITextField alloc] initWithFrame:fieldFrame];
+    self.nameField.borderStyle = UITextBorderStyleRoundedRect;
+    [self.view addSubview:self.nameField];
+    
+    labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
+    UILabel *serialLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    serialLabel.text = @"Serial";
+    [self.view addSubview:serialLabel];
+    self.serialNumberLabel = serialLabel;
+    
+    fieldFrame.origin.y = labelFrame.origin.y;
+    self.serialNumberField = [[UITextField alloc] initWithFrame:fieldFrame];
+    self.serialNumberField.borderStyle = UITextBorderStyleRoundedRect;
+    self.serialNumberField.keyboardType = UIKeyboardTypeNumberPad;
+    [self.view addSubview:self.serialNumberField];
+    
+    labelFrame.origin.y = labelFrame.origin.y + labelHeight + LABEL_MARGIN;
+    UILabel *valueLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    valueLabel.text = @"Value";
+    [self.view addSubview:valueLabel];
+    self.valueLabel = valueLabel;
+    
+    fieldFrame.origin.y = labelFrame.origin.y;
+    self.valueField = [[UITextField alloc] initWithFrame:fieldFrame];
+    self.valueField.borderStyle = UITextBorderStyleRoundedRect;
+    self.valueField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.valueField];
+    
+    self.dateLabel = [[UILabel alloc] init];
+    self.dateLabel.text = @"Label";
+    self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.dateLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:self.dateLabel];
+    
+    self.imageView = [[UIImageView alloc] initWithImage:nil];
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.imageView.autoresizesSubviews = NO;
+    self.imageView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:self.imageView];
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.translatesAutoresizingMaskIntoConstraints = NO;
+    self.toolbar = toolbar;
+    
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
+    [toolbar setItems:@[barButtonItem]];
+    self.cameraButton = barButtonItem;
+    [self.view addSubview:toolbar];
 }
 
 #pragma mark UIImagePickerController delegate

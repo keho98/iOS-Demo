@@ -57,6 +57,8 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     [self.tableView registerNib:nib
          forCellReuseIdentifier:@"KHOItemCell"];
     
+    self.tableView.rowHeight = 44;
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 }
 
