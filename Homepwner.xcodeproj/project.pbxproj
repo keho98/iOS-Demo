@@ -21,6 +21,7 @@
 		D2EAB48A1A92BEF900609225 /* KHOItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EAB4891A92BEF900609225 /* KHOItemCell.m */; };
 		D2EAB48C1A92BF1600609225 /* KHOItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */; };
 		D2EAB48F1A931D8B00609225 /* KHOImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */; };
+		D2FE4E321AA052A400AE579B /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2FE4E301AA052A400AE579B /* Homepwner.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KHOItemCell.xib; sourceTree = "<group>"; };
 		D2EAB48D1A931D8B00609225 /* KHOImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOImageViewController.h; sourceTree = "<group>"; };
 		D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageViewController.m; sourceTree = "<group>"; };
+		D2FE4E311AA052A400AE579B /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */,
 				D2BCF7151A7F4FC9000726E3 /* KHODetailViewController.h */,
 				D2BCF7161A7F4FC9000726E3 /* KHODetailViewController.m */,
+				D2FE4E301AA052A400AE579B /* Homepwner.xcdatamodeld */,
 				D2EAB4881A92BEF900609225 /* KHOItemCell.h */,
 				D2EAB4891A92BEF900609225 /* KHOItemCell.m */,
 				D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */,
@@ -259,6 +262,7 @@
 				D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */,
 				D2EAB48A1A92BEF900609225 /* KHOItemCell.m in Sources */,
 				D2BCF7091A7D7A27000726E3 /* KHOItem.m in Sources */,
+				D2FE4E321AA052A400AE579B /* Homepwner.xcdatamodeld in Sources */,
 				D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
 				D2EAB48F1A931D8B00609225 /* KHOImageViewController.m in Sources */,
@@ -460,6 +464,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D2FE4E301AA052A400AE579B /* Homepwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D2FE4E311AA052A400AE579B /* Homepwner.xcdatamodel */,
+			);
+			currentVersion = D2FE4E311AA052A400AE579B /* Homepwner.xcdatamodel */;
+			path = Homepwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D2BCF6D31A7D7860000726E3 /* Project object */;
 }

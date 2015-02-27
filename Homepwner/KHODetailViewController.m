@@ -239,7 +239,7 @@
     // valueField Constraints
     
     horizontalConstraints = [horizontalConstraints arrayByAddingObjectsFromArray:
-                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-25-[valueLabel(==serialNumberLabel)]-[valueField(==nameField)]"
+                             [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-27-[valueLabel(==serialNumberLabel)]-[valueField(==serialNumberField)]"
                                                                      options:0
                                                                      metrics:nil
                                                                        views:nameMap]];
