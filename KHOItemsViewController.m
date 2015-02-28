@@ -98,7 +98,8 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
         [self.tableView reloadData];
     };
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];[self dismissViewControllerAnimated:YES completion:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     //Interrupts presentation in oldest ancestor self.definesPresentationContext = YES;
@@ -150,10 +151,11 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 
     NSArray *items = [[KHOItemStore sharedStore] allItems];
     if (indexPath.row < [items count]) {
+
         KHOItem *item = items[indexPath.row];
-        
         KHOItemCell *khoCell = [tableView dequeueReusableCellWithIdentifier:@"KHOItemCell"
                                                forIndexPath:indexPath];
+        
         khoCell.nameLabel.text = item.itemName;
         khoCell.serialNumberLabel.text = item.serialNumber;
         khoCell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];

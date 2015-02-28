@@ -9,7 +9,6 @@
 @import UIKit;
 @import CoreData;
 
-
 @interface KHOItem : NSManagedObject
 
 @property (nonatomic, strong) NSDate *dateCreated;
@@ -22,7 +21,7 @@
 @property (nonatomic, strong) NSString *itemKey;
 
 @property (nonatomic) double orderingValue;
-@property (nonatomic) int *valueInDollars;
+@property (nonatomic) int    valueInDollars;
 
 - (void)setThumbnailFromImage:(UIImage *)image;
 

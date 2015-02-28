@@ -118,6 +118,26 @@
     [self.privateItems removeObjectAtIndex:fromIndex];
     
     [self.privateItems insertObject:item atIndex:toIndex];
+    
+    double lowerBound = 0.0;
+    
+    if (toIndex > 0) {
+        lowerBound = [self.privateItems[(toIndex - 1)] orderingValue];
+    } else {
+        lowerBound = [self.privateItems[1] orderingValue] - 2.0;
+    }
+    
+    double upperBound = 0.0;
+    if (toIndex < [self.privateItems count] - 1) {
+        upperBound = [self.privateItems[(toIndex + 1)] orderingValue];
+    } else {
+        upperBound = [self.privateItems[(toIndex - 1)] orderingValue] + 2.0;
+    }
+    
+    double newOrderValue = (lowerBound + upperBound) / 2.0;
+    
+    NSLog(@"moving to order %f", newOrderValue);
+    item.orderingValue = newOrderValue;
 }
 
 - (NSString *)itemArchivePath
@@ -125,6 +145,9 @@
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *documentDirectory = [documentDirectories firstObject];
+    #if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Archive path: %@", documentDirectory);
+    #endif
     return [documentDirectory stringByAppendingPathComponent:@"store.data"];
 }
 
