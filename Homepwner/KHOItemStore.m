@@ -10,10 +10,15 @@
 #import "KHOItemStore.h"
 #import "KHOItem.h"
 
+@import CoreData;
+
 
 @interface KHOItemStore ()
 
 @property (nonatomic) NSMutableArray *privateItems;
+@property (nonatomic, strong) NSMutableArray *allAssetTypes;
+@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectModel *model;
 
 @end
 
@@ -39,12 +44,27 @@
 {
     self = [super init];
     if (self) {
-        NSString *path = [self itemArchivePath];
-        _privateItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        //Read in core data model
+        _model = [NSManagedObjectModel mergedModelFromBundles:nil];
         
-        if (!_privateItems) {
-            _privateItems = [[NSMutableArray alloc] init];
+        NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_model];
+        
+        NSString *path = [self itemArchivePath];
+        NSURL *storeURL = [NSURL fileURLWithPath:path];
+        
+        NSError *error;
+        if (![psc addPersistentStoreWithType:NSSQLiteStoreType
+                               configuration:nil
+                                         URL:storeURL
+                                     options:nil
+                                       error:&error]) {
+            [NSException raise:@"Open Failure"
+                        format:[error localizedDescription]];
         }
+        
+        //Create context
+        _context = [[NSManagedObjectContext alloc] init];
+        _context.persistentStoreCoordinator = psc;
     }
     return self;
 }
@@ -88,19 +108,27 @@
     NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     NSString *documentDirectory = [documentDirectories firstObject];
-    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+    return [documentDirectory stringByAppendingPathComponent:@"store.data"];
 }
 
 - (BOOL)saveChanges
 {
-    NSString *path = [self itemArchivePath];
+    //NSString *path = [self itemArchivePath];
     #if TARGET_IPHONE_SIMULATOR
     // where are you?
-    NSLog(@"Path %@", path);
+    NSLog(@"Saving changes");
     #endif
     
-    return [NSKeyedArchiver archiveRootObject:self.privateItems
-                                       toFile:path];
+    //return [NSKeyedArchiver archiveRootObject:self.privateItems
+    //                                   toFile:path];
+    
+    NSError *error;
+    BOOL success = [self.context save:&error];
+    if (!success) {
+        [NSException raise:@"Error saving %@"
+                    format:[error localizedDescription]];
+    }
+    return success;
 }
 
 @end
