@@ -65,6 +65,8 @@
         //Create context
         _context = [[NSManagedObjectContext alloc] init];
         _context.persistentStoreCoordinator = psc;
+        
+        [self loadAllItems];
     }
     return self;
 }
@@ -76,7 +78,21 @@
 
 - (KHOItem *)createItem
 {
-    KHOItem *item = [[KHOItem alloc] init];
+    double order;
+    if ([self.allItems count] == 0) {
+        order = 1.0;
+    } else {
+        order = [[self.privateItems lastObject] orderingValue] + 1.0;
+    }
+    
+    #if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Adding after %lu items, order = %.2f", (unsigned long)[self.privateItems count], order);
+    #endif
+    
+    KHOItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"KHOItem"
+                                                  inManagedObjectContext:self.context];
+    item.orderingValue = order;
+    
     [self.privateItems addObject:item];
     
     return item;
@@ -88,6 +104,7 @@
     
     [[KHOImageStore sharedStore] deleteImageForKey:key];
     
+    [self.context deleteObject:item];
     [self.privateItems removeObjectIdenticalTo:item];
 }
 
@@ -129,6 +146,29 @@
                     format:[error localizedDescription]];
     }
     return success;
+}
+
+- (void)loadAllItems
+{
+    if (!self.privateItems) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        request.entity = [NSEntityDescription entityForName:@"KHOItem"
+                                      inManagedObjectContext:self.context];
+        
+        NSSortDescriptor *sd = [NSSortDescriptor sortDescriptorWithKey:@"orderingValue"
+                                                             ascending:YES];
+        request.sortDescriptors = @[sd];
+        
+        NSError *error;
+        NSArray *result = [self.context executeFetchRequest:request
+                                                      error:&error];
+        if (!result) {
+            [NSException raise:@"Fetch failed"
+                        format:@"Reason: %@", [error localizedDescription]];
+        }
+        self.privateItems = [[NSMutableArray alloc] initWithArray:result];
+    }
 }
 
 @end

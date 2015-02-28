@@ -14,12 +14,15 @@
 
 @property (nonatomic, strong) NSDate *dateCreated;
 @property (nonatomic, strong) NSString *itemName;
-@property (nonatomic) double * orderingValue;
+
 @property (nonatomic, strong) NSString *serialNumber;
 @property (nonatomic, strong) UIImage *thumbnail;
-@property (nonatomic) int *valueInDollars;
+
 @property (nonatomic, strong) NSManagedObject *assetType;
 @property (nonatomic, strong) NSString *itemKey;
+
+@property (nonatomic) double orderingValue;
+@property (nonatomic) int *valueInDollars;
 
 - (void)setThumbnailFromImage:(UIImage *)image;
 
