@@ -194,4 +194,38 @@
     }
 }
 
+- (NSArray *)allAssetTypes
+{
+    if (!_allAssetTypes) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        request.entity = [NSEntityDescription entityForName:@"KHOAssetType"
+                                     inManagedObjectContext:self.context];
+        
+        NSError *error;
+        NSArray *result = [self.context executeFetchRequest:request
+                                                      error:&error];
+        
+        if (!result) {
+            [NSException raise:@"Fetch failed"
+                        format:[error localizedDescription]];
+        }
+        _allAssetTypes = [result mutableCopy];
+    }
+    
+    if ([_allAssetTypes count] == 0) {
+        NSManagedObject *type;
+        NSArray *initialValues = @[@"Furniture", @"Jewelry", @"Electronics"];
+        
+        for (NSString *value in initialValues) {
+            type = [NSEntityDescription insertNewObjectForEntityForName:@"KHOAssetType"
+                                                 inManagedObjectContext:self.context];
+            
+            [type setValue:value forKey:@"label"];
+            [_allAssetTypes addObject:type];
+        }
+    }
+    return _allAssetTypes;
+}
+
 @end

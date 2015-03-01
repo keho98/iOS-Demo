@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20DCC851AA2905A006293A8 /* KHOAssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCC841AA2905A006293A8 /* KHOAssetTypeViewController.m */; };
 		D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839841A81F52E00855FDC /* KHOImageStore.m */; };
 		D2BCF6E11A7D7860000726E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E01A7D7860000726E3 /* main.m */; };
 		D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E31A7D7860000726E3 /* AppDelegate.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20DCC831AA2905A006293A8 /* KHOAssetTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOAssetTypeViewController.h; sourceTree = "<group>"; };
+		D20DCC841AA2905A006293A8 /* KHOAssetTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOAssetTypeViewController.m; sourceTree = "<group>"; };
 		D22839831A81F52E00855FDC /* KHOImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOImageStore.h; sourceTree = "<group>"; };
 		D22839841A81F52E00855FDC /* KHOImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageStore.m; sourceTree = "<group>"; };
 		D2BCF6DB1A7D7860000726E3 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +130,8 @@
 				D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */,
 				D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */,
 				D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */,
+				D20DCC831AA2905A006293A8 /* KHOAssetTypeViewController.h */,
+				D20DCC841AA2905A006293A8 /* KHOAssetTypeViewController.m */,
 				D2BCF6E21A7D7860000726E3 /* AppDelegate.h */,
 				D2BCF6E31A7D7860000726E3 /* AppDelegate.m */,
 				D2BCF6EB1A7D7860000726E3 /* Images.xcassets */,
@@ -264,6 +269,7 @@
 			files = (
 				D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */,
 				D2BCF7171A7F4FC9000726E3 /* KHODetailViewController.m in Sources */,
+				D20DCC851AA2905A006293A8 /* KHOAssetTypeViewController.m in Sources */,
 				D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */,
 				D2EAB48A1A92BEF900609225 /* KHOItemCell.m in Sources */,
 				D2FE4E321AA052A400AE579B /* Homepwner.xcdatamodeld in Sources */,

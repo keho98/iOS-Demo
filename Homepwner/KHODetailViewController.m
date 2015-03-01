@@ -7,6 +7,8 @@
 //
 
 #import "KHODetailViewController.h"
+#import "KHOAssetTypeViewController.h"
+
 #import "KHOItem.h"
 #import "KHOImageStore.h"
 #import "KHOItemStore.h"
@@ -105,6 +107,13 @@
     UIImage *imageToDisplay = [[KHOImageStore sharedStore] imageForKey:itemKey];
     
     self.imageView.image = imageToDisplay;
+    
+    NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+    if (!typeLabel) {
+        typeLabel = @"None";
+    }
+    
+    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
     
     [self updateFonts];
 }
@@ -331,10 +340,31 @@
     toolbar.translatesAutoresizingMaskIntoConstraints = NO;
     self.toolbar = toolbar;
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(takePicture:)];
-    [toolbar setItems:@[barButtonItem]];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+                                                                                   target:self
+                                                                                   action:@selector(takePicture:)];
+    
+    UIBarButtonItem *assetTypeButton = [[UIBarButtonItem alloc] initWithTitle:@"Type: None"
+                                                                        style:UIBarButtonItemStylePlain
+                                                                       target:self
+                                                                       action:@selector(showAssetTypePicker:)];
+    
+    [toolbar setItems:@[barButtonItem, assetTypeButton]];
+
     self.cameraButton = barButtonItem;
+    self.assetTypeButton = assetTypeButton;
     [self.view addSubview:toolbar];
+}
+
+- (void)showAssetTypePicker:(id)sender
+{
+    [self.view endEditing:YES];
+    
+    KHOAssetTypeViewController *avc = [[KHOAssetTypeViewController alloc] init];
+    avc.item = self.item;
+    
+    [self.navigationController pushViewController:avc
+                                         animated:YES];
 }
 
 #pragma mark UIImagePickerController delegate

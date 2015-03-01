@@ -29,6 +29,8 @@
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *serialNumberLabel;
 
+@property (nonatomic, strong) UIBarButtonItem *assetTypeButton;
+
 
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
