@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class KHOItemsHeaderView;
-
 @interface KHOItemsViewController : UITableViewController <UIViewControllerRestoration>
 
 @end

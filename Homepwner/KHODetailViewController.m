@@ -340,6 +340,7 @@
     self.valueField = [[UITextField alloc] initWithFrame:fieldFrame];
     self.valueField.borderStyle = UITextBorderStyleRoundedRect;
     self.valueField.translatesAutoresizingMaskIntoConstraints = NO;
+    self.valueField.keyboardType = UIKeyboardTypeNumberPad;
     [self.view addSubview:self.valueField];
     
     self.dateLabel = [[UILabel alloc] init];
@@ -419,6 +420,35 @@
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     self.imagePickerPopover = nil;
+}
+
+#pragma mark State Restoration
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:self.item.itemKey forKey:@"item.itemKey"];
+    
+    self.item.itemName = self.nameField.text;
+    self.item.serialNumber = self.serialNumberField.text;
+    self.item.valueInDollars = [self.valueField.text integerValue];
+    
+    [[KHOItemStore sharedStore] saveChanges];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    NSString *itemKey = [coder decodeObjectForKey:@"item.itemKey"];
+    
+    for (KHOItem* item in [[KHOItemStore sharedStore] allItems]) {
+        if ([itemKey isEqualToString:item.itemKey]) {
+            self.item = item;
+            break;
+        }
+    }
+    
+    [super decodeRestorableStateWithCoder:coder];
 }
 
 @end
