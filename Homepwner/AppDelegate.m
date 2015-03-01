@@ -16,17 +16,26 @@
 
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    // If state restoration did not occur, set up view controller hierarchy
+    if (!self.window.rootViewController) {
+        KHOItemsViewController *ivc = [[KHOItemsViewController alloc] init];
+        
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ivc];
+        nc.restorationIdentifier = NSStringFromClass([nc class]);
+        
+        self.window.rootViewController = nc;
+    }
     
-    KHOItemsViewController *ivc = [[KHOItemsViewController alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:ivc];
-    nc.restorationIdentifier = NSStringFromClass([nc class]);
-    
-    self.window.rootViewController = nc;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -68,6 +77,26 @@ shouldSaveApplicationState:(NSCoder *)coder
 shouldRestoreApplicationState:(NSCoder *)coder
 {
     return YES;
+}
+
+- (UIViewController *)application:(UIApplication *)application
+viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents
+                            coder:(NSCoder *)coder
+{
+    UIViewController *vc = [[UINavigationController alloc] init];
+    
+    vc.restorationIdentifier = [identifierComponents lastObject];
+    
+    if ([identifierComponents count] == 1) {
+        //If only 1 identifier component, set as rootViewController
+        self.window.rootViewController = vc;
+    }
+    else {
+        // Else set as a modal presentation
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    return vc;
 }
 
 @end

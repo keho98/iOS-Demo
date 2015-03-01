@@ -28,6 +28,12 @@
 
 const NSInteger KHOItemsViewControllerNumberItems = 5;
 
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents
+                                                            coder:(NSCoder *)coder
+{
+    return [[self alloc] init];
+}
+
 - (instancetype)init
 {
     self = [super initWithStyle:UITableViewStylePlain];

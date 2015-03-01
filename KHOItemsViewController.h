@@ -10,6 +10,6 @@
 
 @class KHOItemsHeaderView;
 
-@interface KHOItemsViewController : UITableViewController
+@interface KHOItemsViewController : UITableViewController <UIViewControllerRestoration>
 
 @end

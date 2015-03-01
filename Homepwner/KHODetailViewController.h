@@ -10,7 +10,7 @@
 
 @class KHOItem;
 
-@interface KHODetailViewController : UIViewController
+@interface KHODetailViewController : UIViewController <UIViewControllerRestoration>
 
 - (instancetype)initForNewItem:(BOOL)isNew;
 
