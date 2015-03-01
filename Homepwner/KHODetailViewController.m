@@ -28,6 +28,9 @@
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+        
         if (isNew) {
             UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                       target:self
@@ -126,9 +129,12 @@
     [self.view endEditing:YES];
     
     KHOItem *item = self.item;
-    item.itemName = self.nameField.text;
-    item.serialNumber = self.serialNumberField.text;
-    item.valueInDollars = [self.valueField.text intValue];
+    // Assume item is deleted if managed object context is nil
+    if (!item.managedObjectContext == nil) {
+        item.itemName = self.nameField.text;
+        item.serialNumber = self.serialNumberField.text;
+        item.valueInDollars = [self.valueField.text intValue];
+    }
 }
 
 - (void)setItem:(KHOItem *)item

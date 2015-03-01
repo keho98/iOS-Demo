@@ -35,6 +35,9 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"Homepwner";
         
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+        
         UIBarButtonItem * bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
         
         navItem.rightBarButtonItem = bbi;
@@ -99,7 +102,7 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     };
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
     
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     //Interrupts presentation in oldest ancestor self.definesPresentationContext = YES;
@@ -165,11 +168,11 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
         __weak KHOItemCell *weakCell = khoCell;
         
         khoCell.actionBlock = ^{
-            NSLog(@"Going to show image for %@", item);
             
             KHOItemCell *strongCell = weakCell;
             
             if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                NSLog(@"Going to show image for %@", item);
                 
                 NSString *itemKey = item.itemKey;
                 
