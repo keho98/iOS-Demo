@@ -18,7 +18,7 @@
 
 #define NUM_EXTRA_ROWS 1
 
-@interface KHOItemsViewController () <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
+@interface KHOItemsViewController () <UIDataSourceModelAssociation, UIPopoverControllerDelegate>
 
 @property (strong,nonatomic) UIPopoverController *imagePopover;
 
@@ -81,6 +81,8 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     self.tableView.rowHeight = 44;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    
+    self.tableView.restorationIdentifier = @"KHOItemsViewControllerTableView";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -278,6 +280,53 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     self.imagePopover = nil;
+}
+
+#pragma mark State Restoration
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    self.editing = [coder decodeBoolForKey:@"TableViewIsEditing"];
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+#pragma mark UIDataSourceModelAssociation
+
+- (NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx
+                                            inView:(UIView *)view
+{
+    NSString *identifier = nil;
+    if (idx && view) {
+        KHOItem *item = [[KHOItemStore sharedStore] allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    return identifier;
+}
+
+- (NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier
+                                                 inView:(UIView *)view
+{
+    NSIndexPath *idx = nil;
+    
+    if (identifier && view) {
+        NSArray *items = [[KHOItemStore sharedStore] allItems];
+        for (KHOItem *item in items) {
+            if ([identifier isEqualToString:item.itemKey]) {
+                int row = [items indexOfObjectIdenticalTo:item];
+                idx = [NSIndexPath indexPathForRow:row inSection:0];
+            }
+        }
+    }
+    
+    return idx;
 }
 
 @end
