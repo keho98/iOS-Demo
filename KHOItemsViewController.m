@@ -55,6 +55,10 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
                selector:@selector(updateTableViewForDynamicTypeSize)
                    name:UIContentSizeCategoryDidChangeNotification
                  object:nil];
+        [nc addObserver:self
+               selector:@selector(localeChanged:)
+                   name:NSCurrentLocaleDidChangeNotification
+                 object:nil];
     }
     return self;
 }
@@ -142,6 +146,11 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     [self.tableView reloadData];
 }
 
+- (void)localeChanged:(NSNotification *)note
+{
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDelegate
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,7 +178,14 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
         
         khoCell.nameLabel.text = item.itemName;
         khoCell.serialNumberLabel.text = item.serialNumber;
-        khoCell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
+        
+        static NSNumberFormatter *currencyFormatter = nil;
+        if (currencyFormatter == nil) {
+            currencyFormatter = [[NSNumberFormatter alloc] init];
+            currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+        }
+        
+        khoCell.valueLabel.text = [currencyFormatter stringFromNumber:@(item.valueInDollars)];
         
         khoCell.thumbnailView.image = item.thumbnail;
         
