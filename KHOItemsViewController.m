@@ -39,7 +39,7 @@ const NSInteger KHOItemsViewControllerNumberItems = 5;
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         UINavigationItem *navItem = self.navigationItem;
-        navItem.title = @"Homepwner";
+        navItem.title = NSLocalizedString(@"Hello!", @"Name of application");
         
         self.restorationIdentifier = NSStringFromClass([self class]);
         self.restorationClass = [self class];
