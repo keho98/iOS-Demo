@@ -16,6 +16,15 @@
 
 @implementation AppDelegate
 
++ (void)initialize
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *factorySettings = @{KHONextItemValuePrefsKey : @75,
+                                      KHONextItemNamePrefsKey  : @"Coffee Cup"};
+    
+    [defaults registerDefaults:factorySettings];
+}
+
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

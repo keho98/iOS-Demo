@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const KHONextItemValuePrefsKey;
+extern NSString * const KHONextItemNamePrefsKey;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
