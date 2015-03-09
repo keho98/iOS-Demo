@@ -22,6 +22,7 @@
 		D2EAB48C1A92BF1600609225 /* KHOItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EAB48B1A92BF1600609225 /* KHOItemCell.xib */; };
 		D2EAB48F1A931D8B00609225 /* KHOImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */; };
 		D2F6710B1AAD734B000FE107 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */; };
+		D2F6710D1AAD7E15000FE107 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2F6710C1AAD7E15000FE107 /* Settings.bundle */; };
 		D2FE4E321AA052A400AE579B /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2FE4E301AA052A400AE579B /* Homepwner.xcdatamodeld */; };
 		D2FE4E351AA0544800AE579B /* KHOImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FE4E341AA0544800AE579B /* KHOImageTransformer.m */; };
 		D2FE4E381AA0631F00AE579B /* KHOItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FE4E371AA0631F00AE579B /* KHOItem.m */; };
@@ -69,6 +70,7 @@
 		D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageViewController.m; sourceTree = "<group>"; };
 		D2F671091AAD707E000FE107 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2F6710A1AAD7124000FE107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2F6710C1AAD7E15000FE107 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D2FE4E311AA052A400AE579B /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		D2FE4E331AA0544800AE579B /* KHOImageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOImageTransformer.h; sourceTree = "<group>"; };
 		D2FE4E341AA0544800AE579B /* KHOImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageTransformer.m; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				D2BCF6E21A7D7860000726E3 /* AppDelegate.h */,
 				D2BCF6E31A7D7860000726E3 /* AppDelegate.m */,
 				D2BCF6EB1A7D7860000726E3 /* Images.xcassets */,
+				D2F6710C1AAD7E15000FE107 /* Settings.bundle */,
 				D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */,
 				D2BCF6DE1A7D7860000726E3 /* Supporting Files */,
 			);
@@ -256,6 +259,7 @@
 			files = (
 				D2F6710B1AAD734B000FE107 /* LaunchScreen.xib in Resources */,
 				D2EAB48C1A92BF1600609225 /* KHOItemCell.xib in Resources */,
+				D2F6710D1AAD7E15000FE107 /* Settings.bundle in Resources */,
 				D2BBE9F71AAD49F300C58CC2 /* Localizable.strings in Resources */,
 				D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */,
 			);
