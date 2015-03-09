@@ -10,6 +10,7 @@
 		D20DCC851AA2905A006293A8 /* KHOAssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCC841AA2905A006293A8 /* KHOAssetTypeViewController.m */; };
 		D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839841A81F52E00855FDC /* KHOImageStore.m */; };
 		D2BBE9F41AAD496600C58CC2 /* KHOItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BBE9F31AAD496600C58CC2 /* KHOItemsViewController.m */; };
+		D2BBE9F71AAD49F300C58CC2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2BBE9F91AAD49F300C58CC2 /* Localizable.strings */; };
 		D2BCF6E11A7D7860000726E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E01A7D7860000726E3 /* main.m */; };
 		D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E31A7D7860000726E3 /* AppDelegate.m */; };
 		D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6EB1A7D7860000726E3 /* Images.xcassets */; };
@@ -43,6 +44,9 @@
 		D22839841A81F52E00855FDC /* KHOImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageStore.m; sourceTree = "<group>"; };
 		D2BBE9F21AAD496600C58CC2 /* KHOItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemsViewController.h; sourceTree = "<group>"; };
 		D2BBE9F31AAD496600C58CC2 /* KHOItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemsViewController.m; sourceTree = "<group>"; };
+		D2BBE9F81AAD49F300C58CC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2BBE9FA1AAD4A1E00C58CC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D2BBE9FB1AAD4A1E00C58CC2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D2BCF6DB1A7D7860000726E3 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BCF6DF1A7D7860000726E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BCF6E01A7D7860000726E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		D2BCF6DD1A7D7860000726E3 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				D2BBE9F91AAD49F300C58CC2 /* Localizable.strings */,
 				D2BBE9F21AAD496600C58CC2 /* KHOItemsViewController.h */,
 				D2BBE9F31AAD496600C58CC2 /* KHOItemsViewController.m */,
 				D2FE4E361AA0631F00AE579B /* KHOItem.h */,
@@ -230,6 +235,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = D2BCF6D21A7D7860000726E3;
 			productRefGroup = D2BCF6DC1A7D7860000726E3 /* Products */;
@@ -248,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2EAB48C1A92BF1600609225 /* KHOItemCell.xib in Resources */,
+				D2BBE9F71AAD49F300C58CC2 /* Localizable.strings in Resources */,
 				D2BCF6EF1A7D7860000726E3 /* LaunchScreen.xib in Resources */,
 				D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */,
 			);
@@ -302,10 +309,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D2BBE9F91AAD49F300C58CC2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2BBE9F81AAD49F300C58CC2 /* Base */,
+				D2BBE9FB1AAD4A1E00C58CC2 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D2BCF6EE1A7D7860000726E3 /* Base */,
+				D2BBE9FA1AAD4A1E00C58CC2 /* es */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
