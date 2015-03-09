@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		D20DCC851AA2905A006293A8 /* KHOAssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20DCC841AA2905A006293A8 /* KHOAssetTypeViewController.m */; };
 		D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839841A81F52E00855FDC /* KHOImageStore.m */; };
+		D2BBE9F41AAD496600C58CC2 /* KHOItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BBE9F31AAD496600C58CC2 /* KHOItemsViewController.m */; };
 		D2BCF6E11A7D7860000726E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E01A7D7860000726E3 /* main.m */; };
 		D2BCF6E41A7D7860000726E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6E31A7D7860000726E3 /* AppDelegate.m */; };
 		D2BCF6EC1A7D7860000726E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6EB1A7D7860000726E3 /* Images.xcassets */; };
 		D2BCF6EF1A7D7860000726E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2BCF6ED1A7D7860000726E3 /* LaunchScreen.xib */; };
 		D2BCF6FB1A7D7860000726E3 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF6FA1A7D7860000726E3 /* HomepwnerTests.m */; };
-		D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */; };
 		D2BCF70C1A7D7A7B000726E3 /* KHOItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */; };
 		D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF70E1A7DA4D7000726E3 /* KHOItemsHeaderView.m */; };
 		D2BCF7171A7F4FC9000726E3 /* KHODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF7161A7F4FC9000726E3 /* KHODetailViewController.m */; };
@@ -41,6 +41,8 @@
 		D20DCC841AA2905A006293A8 /* KHOAssetTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOAssetTypeViewController.m; sourceTree = "<group>"; };
 		D22839831A81F52E00855FDC /* KHOImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOImageStore.h; sourceTree = "<group>"; };
 		D22839841A81F52E00855FDC /* KHOImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOImageStore.m; sourceTree = "<group>"; };
+		D2BBE9F21AAD496600C58CC2 /* KHOItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemsViewController.h; sourceTree = "<group>"; };
+		D2BBE9F31AAD496600C58CC2 /* KHOItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemsViewController.m; sourceTree = "<group>"; };
 		D2BCF6DB1A7D7860000726E3 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BCF6DF1A7D7860000726E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BCF6E01A7D7860000726E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -51,8 +53,6 @@
 		D2BCF6F41A7D7860000726E3 /* HomepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BCF6F91A7D7860000726E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2BCF6FA1A7D7860000726E3 /* HomepwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerTests.m; sourceTree = "<group>"; };
-		D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHOItemsViewController.h; path = ../KHOItemsViewController.h; sourceTree = "<group>"; };
-		D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KHOItemsViewController.m; path = ../KHOItemsViewController.m; sourceTree = "<group>"; };
 		D2BCF70A1A7D7A7B000726E3 /* KHOItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemStore.h; sourceTree = "<group>"; };
 		D2BCF70B1A7D7A7B000726E3 /* KHOItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOItemStore.m; sourceTree = "<group>"; };
 		D2BCF70D1A7DA4D7000726E3 /* KHOItemsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOItemsHeaderView.h; sourceTree = "<group>"; };
@@ -110,10 +110,10 @@
 		D2BCF6DD1A7D7860000726E3 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				D2BBE9F21AAD496600C58CC2 /* KHOItemsViewController.h */,
+				D2BBE9F31AAD496600C58CC2 /* KHOItemsViewController.m */,
 				D2FE4E361AA0631F00AE579B /* KHOItem.h */,
 				D2FE4E371AA0631F00AE579B /* KHOItem.m */,
-				D2BCF7041A7D7910000726E3 /* KHOItemsViewController.h */,
-				D2BCF7051A7D7910000726E3 /* KHOItemsViewController.m */,
 				D2EAB48D1A931D8B00609225 /* KHOImageViewController.h */,
 				D2EAB48E1A931D8B00609225 /* KHOImageViewController.m */,
 				D22839831A81F52E00855FDC /* KHOImageStore.h */,
@@ -276,9 +276,9 @@
 				D22839851A81F52E00855FDC /* KHOImageStore.m in Sources */,
 				D2BCF6E11A7D7860000726E3 /* main.m in Sources */,
 				D2FE4E351AA0544800AE579B /* KHOImageTransformer.m in Sources */,
+				D2BBE9F41AAD496600C58CC2 /* KHOItemsViewController.m in Sources */,
 				D2EAB48F1A931D8B00609225 /* KHOImageViewController.m in Sources */,
 				D2FE4E381AA0631F00AE579B /* KHOItem.m in Sources */,
-				D2BCF7061A7D7910000726E3 /* KHOItemsViewController.m in Sources */,
 				D2BCF70F1A7DA4D7000726E3 /* KHOItemsHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
