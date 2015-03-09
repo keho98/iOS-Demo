@@ -10,9 +10,8 @@
 #import "KHOItemsViewController.h"
 #import "KHOItemStore.h"
 
-@interface AppDelegate ()
-
-@end
+NSString * const KHONextItemValuePrefsKey = @"NextItemValue";
+NSString * const KHONextItemNamePrefsKey = @"NextItemName";
 
 @implementation AppDelegate
 

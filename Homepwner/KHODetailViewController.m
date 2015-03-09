@@ -13,6 +13,8 @@
 #import "KHOImageStore.h"
 #import "KHOItemStore.h"
 
+#import "AppDelegate.h"
+
 #define LABEL_MARGIN 10.0
 
 @interface KHODetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate>
@@ -141,12 +143,22 @@
     [self.view endEditing:YES];
     
     KHOItem *item = self.item;
+    
+    int newValue = [self.valueField.text intValue];
+    
+    if (newValue != item.valueInDollars) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setInteger:newValue
+                      forKey:KHONextItemValuePrefsKey];
+    }
+    
     // Assume item is deleted if managed object context is nil
     if (!item.managedObjectContext == nil) {
         item.itemName = self.nameField.text;
         item.serialNumber = self.serialNumberField.text;
         item.valueInDollars = [self.valueField.text intValue];
     }
+    
 }
 
 - (void)setItem:(KHOItem *)item

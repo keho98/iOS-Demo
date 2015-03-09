@@ -10,6 +10,8 @@
 #import "KHOItemStore.h"
 #import "KHOItem.h"
 
+#import "AppDelegate.h"
+
 @import CoreData;
 
 
@@ -92,6 +94,10 @@
     KHOItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"KHOItem"
                                                   inManagedObjectContext:self.context];
     item.orderingValue = order;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    item.valueInDollars = [defaults integerForKey:KHONextItemValuePrefsKey];
+    item.itemName = [defaults objectForKey:KHONextItemNamePrefsKey];
     
     [self.privateItems addObject:item];
     
